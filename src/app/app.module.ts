@@ -6,16 +6,32 @@ import { MyApp } from './app.component';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
+import { ProductListPage } from '../pages/productList/productList';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import firebase from "firebase";
+import { GetItemsListProvider } from '../providers/get-items-list/get-items-list';
+
+
+var config = {
+  apiKey: "AIzaSyCxEgITPxPfip5Fn-ZWgZnic65ldr0uLpw",
+  authDomain: "gmarket-5b1f0.firebaseapp.com",
+  databaseURL: "https://gmarket-5b1f0.firebaseio.com",
+  projectId: "gmarket-5b1f0",
+  storageBucket: "gmarket-5b1f0.appspot.com",
+  messagingSenderId: "78394573435",
+};
+firebase.initializeApp(config);
 
 @NgModule({
   declarations: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
+    ProductListPage
   ],
   imports: [
     BrowserModule,
@@ -26,12 +42,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
+    ProductListPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GetItemsListProvider
   ]
 })
 export class AppModule {}
