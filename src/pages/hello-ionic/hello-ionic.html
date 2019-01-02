@@ -1,25 +1,23 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Hello Ionic</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content padding id="welcome">
+  <img src="assets/imgs/logo.png" class="logo"/>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1>Welcome to Your App</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-
-<ion-content padding>
-
-  <h3>Welcome to your first Ionic app!</h3>
-
-  <p>
-    This starter project is our way of helping you get a functional app running in record time.
-  </p>
-  <p>
-    Follow along on the tutorial section of the Ionic docs!
-  </p>
-  <p>
-    <button ion-button color="primary" menuToggle>Toggle Menu</button>
-  </p>
-
+  <ion-grid >
+    <ion-row>
+      <ion-col center text-center>
+        <button ion-button full color="success" (click)="signup()">Sign up</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col center text-center>
+        <button ion-button full color="lightText" (click)="login()">Log in</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

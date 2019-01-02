@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import firebase from 'firebase';
 
+
 @Component({
   selector: 'page-productList',
   templateUrl: 'productList.html'
