@@ -3,15 +3,15 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
+import { Welcome } from '../pages/welcome/welcome';
 import { ProductListPage } from '../pages/productList/productList';
+import { SignupPage } from '../pages/signup/signup';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import firebase from "firebase";
 import { GetItemsListProvider } from '../providers/get-items-list/get-items-list';
-import { CartServiceProvider } from '../providers/cart-service/cart-service';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 
@@ -28,8 +28,9 @@ firebase.initializeApp(config);
 @NgModule({
   declarations: [
     MyApp,
-    HelloIonicPage,
-    ProductListPage
+    Welcome,
+    ProductListPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -38,15 +39,15 @@ firebase.initializeApp(config);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HelloIonicPage,
-    ProductListPage
+    Welcome,
+    ProductListPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GetItemsListProvider,
-    CartServiceProvider,
     AuthServiceProvider
   ]
 })

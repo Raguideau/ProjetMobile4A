@@ -1,18 +1,40 @@
-import {Injectable} from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import firebase from "firebase";
-import { Observable } from 'rxjs/Observable';
-/*
-  Generated class for the AuthServiceProvider provider.
+import { Injectable } from "@angular/core";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class AuthServiceProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello AuthServiceProvider Provider');
-  }
+  constructor(){}
 
+	 loginUser(email: string, password: string): Promise<any> {
+	  return firebase.auth().signInWithEmailAndPassword(email, password);
+	}
+
+	signupUser(email: string, password: string): Promise<any> {
+	  return firebase
+	    .auth()
+	    .createUserWithEmailAndPassword(email, password)
+	    .then(newUserCredential => {
+	      firebase
+	        .database()
+	        .ref(`/userProfile/${newUserCredential.user.uid}/email`)
+	        .set(email);
+	    })
+	    .catch(error => {
+	      console.error(error);
+	      throw new Error(error);
+	    });
+	}
+
+	logoutUser():Promise<void> {
+	  const userId: string = firebase.auth().currentUser.uid;
+	  firebase
+	    .database()
+	    .ref(`/userProfile/${userId}`)
+	    .off();
+	  return firebase.auth().signOut();
+	}
 }
+
