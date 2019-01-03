@@ -5,8 +5,8 @@
 		</button>
 		<ion-title>Game list</ion-title>
 		<ion-buttons end>
-			<button ion-button color="dark">
-				<ion-icon name="md-cart"></ion-icon>
+			<button (click)="goToCart()" ion-button color="dark">
+				<ion-icon  name="md-cart"></ion-icon>
 			</button>
 		</ion-buttons>
 	</ion-navbar>
@@ -34,7 +34,7 @@
 					<ion-col>
 						<p>Prix {{item.price}} €</p>
 						<p>Stock {{item.stock}}</p>             
-						<button>Ajouter au panier</button>
+						<button (click)="addToCart(item)" >Ajouter au panier</button>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
