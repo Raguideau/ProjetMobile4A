@@ -1,33 +1,39 @@
+
 <ion-content padding>
-  <img src="assets/img/banner.jpg" />
+
+<h3> Création de compte </h3>
+
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
     <ion-item>
       <ion-label stacked>Email</ion-label>
       <ion-input formControlName="email" type="email" 
-      placeholder="Your email address" 
+      placeholder="Entrez votre addresse email" 
       [class.invalid]="!signupForm.controls.email.valid && blur">
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!signupForm.controls.email.valid  
     && signupForm.controls.email.touched">
-      <p>Please enter a valid email.</p>
+      <p>Veuillez entrer une adresse mail valide.</p>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Password</ion-label>
+      <ion-label stacked>Mot de Passe</ion-label>
       <ion-input formControlName="password" type="password" 
-      placeholder="Your password" 
+      placeholder="Votre Mot de Passe" 
       [class.invalid]="!signupForm.controls.password.valid && blur">
       </ion-input>
     </ion-item>
     <ion-item class="error-message" 
     *ngIf="!signupForm.controls.password.valid  && 
     signupForm.controls.password.touched">
-      <p>Your password needs more than 6 characters.</p>
+      <p>Votre mot de passe doit faire plus de 6 caractères.</p>
     </ion-item>
 
     <button ion-button block type="submit" [disabled]="!signupForm.valid">
-      Create an Account
+      Créer un nouveau compte
+    </button>
+    <button ion-button block clear (click)="popView()">
+      Retour
     </button>
   </form>
 </ion-content>

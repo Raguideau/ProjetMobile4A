@@ -67,6 +67,9 @@ export class SignupPage {
       this.loading.present();
     }
   }
-
+  
+   popView(){
+     this.navCtrl.pop();
+   }
 
 }
