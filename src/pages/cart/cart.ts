@@ -16,10 +16,16 @@ export class CartPage {
   constructor(
     public navCtrl: NavController,
     public cartProvider: CartServiceProvider
-    ) {
-    this.cartList = this.cartProvider.getCartList();
+    )
+    {
+      this.cartProvider.cartRef.on('value', itemSnapshot => {
+        this.cartList = this.cartProvider.getCartList();
+      })
+    }
+
+
+  removeItems( item: any ){
+    console.log(item.name);
+    this.cartProvider.removeItem(item);
   }
-
-
-
 }

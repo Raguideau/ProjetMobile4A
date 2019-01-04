@@ -35,8 +35,11 @@ export class ProductListPage {
   }
 
   addToCart(item) : void {
+    console.log(item.name);
     this.cartProvider.addItem(item);
   }
+
+
 
   goToCart():void{
     this.navCtrl.push(CartPage);

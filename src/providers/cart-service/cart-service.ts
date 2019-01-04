@@ -32,31 +32,47 @@ export class CartServiceProvider {
 		});
 	}
 
+	testAvailability(quantityInCart: number, itemInStock: any){
+		console.log(itemInStock.stock)
+		if(itemInStock.stock > quantityInCart){
+			return 1;
+		}
+		else{
+
+			return 0;
+		}
+	}
+
 	addItem(item: any ){
 		this.itemExist=0;
 		this.itemName=item.name;
 		this.cartRef.once('value')
-			.then( cartSnapshot => {
-				cartSnapshot.forEach(catrsnap => {
-					if(catrsnap.child("item").child("name").val() == this.itemName){
+		.then( cartSnapshot => {
+			cartSnapshot.forEach(catrsnap => {
+				if(catrsnap.child("item").child("name").val() == this.itemName){
+					console.log(catrsnap.child("item").child("quantity").val());
+					if(this.testAvailability(catrsnap.child("item").child("quantity").val() , item)){
 						catrsnap.child("item").ref.update(
 							{ quantity: catrsnap.child("item").child("quantity").val() + 1 }
-						);
-						console.log("item trouvé")
-						this.itemExist=1;
+							);
+						//console.log("item + 1");
 					}
+					this.itemExist=1;
+				}
 
-				})
+			})
 			if(this.itemExist == 0){
-				item.quantity=1;
-				this.cartRef.push( { item }  );
-				console.log("item ajouté")
+				if(this.testAvailability(1, item)){
+					item.quantity=1;
+					this.cartRef.push( { item }  );
+				}
+				//console.log("item ajouté");
 			}
 			else{
 				this.itemExist = 0;
 			}
 
-			})
+		})
 
 
 	}
@@ -64,5 +80,19 @@ export class CartServiceProvider {
 
 	getCartList(): any[] {
 		return this.cartItems;
+	}
+
+
+	removeItem(item: any ){
+		let itemName: string = item.name;
+		this.cartRef.once('value')
+		.then( cartSnapshot => {
+			cartSnapshot.forEach(catrsnap => {
+				if(catrsnap.child("item").child("name").val() == itemName){
+					catrsnap.child("item").ref.remove();
+					console.log(`${item} deleted`)
+				}
+			})
+		})
 	}
 }

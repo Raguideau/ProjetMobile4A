@@ -33,12 +33,12 @@
 					</ion-col>
 					<ion-col>
 						<p>Prix {{item.item.price}} €</p>
-						<p>Stock {{item.item.quantity}}</p>
+						<p>Stock {{item.item.stock}}</p>
+						<p>quantity {{item.item.quantity}}</p>
+						<button (click)='removeItems(item.item)'> Retirer du panier </button>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
 		</ion-item>
 	</ion-list>
-
-<button (click)='loadItems()'> load </button>
 </ion-content>
