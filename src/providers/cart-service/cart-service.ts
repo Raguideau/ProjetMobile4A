@@ -13,6 +13,7 @@ export class CartServiceProvider {
 	public cartRef: firebase.database.Reference;
 	public itemName: string;
 	public itemExist: number;
+	public itemRef: firebase.database.Reference = firebase.database().ref('/products');
 
 	constructor() {
 		firebase.auth().onAuthStateChanged( user => {
@@ -92,6 +93,25 @@ export class CartServiceProvider {
 					catrsnap.child("item").ref.remove();
 					console.log(`${item} deleted`)
 				}
+			})
+		})
+	}
+
+
+	placeOrder(){
+		this.itemRef.once('value')
+		.then( cartSnapshot => {
+			let matchingItem;
+			let stockLeft: number;
+			cartSnapshot.forEach(catrsnap => {
+				matchingItem = this.cartItems.find( item => item.item.name == catrsnap.child("name").val())
+				if (matchingItem != undefined){
+					stockLeft = catrsnap.child("stock").val() - matchingItem.item.quantity
+					catrsnap.ref.update( { stock: stockLeft } )
+					//console.log(matchingItem);
+					this.cartRef.remove();
+				}
+				
 			})
 		})
 	}

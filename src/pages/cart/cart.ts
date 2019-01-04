@@ -28,4 +28,10 @@ export class CartPage {
     console.log(item.name);
     this.cartProvider.removeItem(item);
   }
+
+  placeOrder(){
+    this.cartProvider.placeOrder();
+  }
+
+
 }
