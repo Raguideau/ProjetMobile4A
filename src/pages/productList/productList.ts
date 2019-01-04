@@ -4,6 +4,7 @@ import { CartServiceProvider } from '../../providers/cart-service/cart-service';
 import { CartPage } from '../cart/cart';
 import { ProductDetailsPage } from '../product-details/product-details';
 import firebase from 'firebase';
+import { ToastController } from 'ionic-angular';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class ProductListPage {
 
   constructor(
     public navCtrl: NavController,
-    public cartProvider: CartServiceProvider
+    public cartProvider: CartServiceProvider,
+    private toastCtrl: ToastController
     ) {
   }
 
@@ -36,8 +38,15 @@ export class ProductListPage {
   }
 
   addToCart(item) : void {
-    console.log(item.name);
+    //console.log(item.name);
     this.cartProvider.addItem(item);
+    let toast = this.toastCtrl.create({
+      message: 'Le produit a été ajoutée au panier',
+      duration: 3000,
+      position: 'bottom'
+    });
+    
+    toast.present();
   }
 
 

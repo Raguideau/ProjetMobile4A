@@ -1,5 +1,7 @@
 {
   "name": "ProjetMobile",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

@@ -40,7 +40,7 @@ export class CartPage {
   placeOrder(){
     const alert = this.alertCtrl.create({
       title: 'Merci de votre achat!',
-      subTitle: 'Votre commande a bien été pris en compte',
+      subTitle: 'Votre commande a bien été prise en compte',
       buttons: ['OK']
     });
     alert.present();
