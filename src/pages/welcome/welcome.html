@@ -1,33 +1,40 @@
-<form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
-  <ion-item>
-    <ion-label stacked>Email</ion-label>
-    <ion-input formControlName="email" type="email" 
-    placeholder="Your email address" 
-    [class.invalid]="!loginForm.controls.email.valid && blur">
+<ion-content>
+
+<h3>Bienvenue sur notre site</h3>
+
+<img src="../../assets/imgs/welcome.jpg"> 
+
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input formControlName="email" type="email" 
+      placeholder="Entrez votre addresse email" 
+      [class.invalid]="!loginForm.controls.email.valid && blur">
     </ion-input>
   </ion-item>
   <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid &&
-   loginForm.controls.email.touched">
-    <p>Please enter a valid email address.</p>
-  </ion-item>
+  loginForm.controls.email.touched">
+  <p>Veuillez entrer une adresse mail valide.</p>
+</ion-item>
 
-  <ion-item>
-    <ion-label stacked>Password</ion-label>
-    <ion-input formControlName="password" type="password" 
-    placeholder="Your password" 
-    [class.invalid]="!loginForm.controls.password.valid && blur">
-    </ion-input>
-  </ion-item>
-  <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid 
-  && loginForm.controls.password.touched">
-    <p>Your password needs more than 6 characters.</p>
-  </ion-item>
+<ion-item>
+  <ion-label stacked>Mot de Passe</ion-label>
+  <ion-input formControlName="password" type="password" 
+  placeholder="Votre Mot de Passe" 
+  [class.invalid]="!loginForm.controls.password.valid && blur">
+</ion-input>
+</ion-item>
+<ion-item class="error-message" *ngIf="!loginForm.controls.password.valid 
+&& loginForm.controls.password.touched">
+<p>Votre mot de passe doit faire plus de 6 caractères.</p>
+</ion-item>
 
-  <button ion-button block type="submit" [disabled]="!loginForm.valid">
-    Log In
-  </button>
+<button ion-button block type="submit" [disabled]="!loginForm.valid">
+  S'Identifier
+</button>
 </form>
 
 <button ion-button block clear (click)="goToSignup()">
-  Create a new account
+  Créer un nouveau compte
 </button>
+</ion-content>
