@@ -1,0 +1,42 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>  Produit:  {{selectedItem.name}} </ion-title>
+		<ion-buttons end>
+			<button (click)="goToCart()" ion-button color="dark">
+				<ion-icon name="md-cart"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<div class="productDetailPage">
+		<h2>{{selectedItem.name}}</h2>
+
+		<div class="picture">
+			<img src={{selectedItem.picture}}>  
+		</div>
+			
+		<div class="description">
+			{{selectedItem.description}}
+		</div>
+
+
+		<div class="otherInformation">
+			<ion-grid>
+				<ion-row>
+					<ion-col>
+						<p>Prix {{selectedItem.price}} €</p>
+						<p>Stock {{selectedItem.stock}}</p>    
+					</ion-col>         
+					<ion-col>
+						<button class="detailButton" ion-button round (click)="addToCart(selectedItem)" >Ajouter au panier</button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</div>
+	</div>
+</ion-content>

@@ -7,6 +7,7 @@ import { Welcome } from '../pages/welcome/welcome';
 import { ProductListPage } from '../pages/productList/productList';
 import { SignupPage } from '../pages/signup/signup';
 import { CartPage } from '../pages/cart/cart';
+import { ProductDetailsPage } from '../pages/product-details/product-details';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,7 +34,8 @@ firebase.initializeApp(config);
     Welcome,
     ProductListPage,
     SignupPage,
-    CartPage
+    CartPage,
+    ProductDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ firebase.initializeApp(config);
     Welcome,
     ProductListPage,
     SignupPage,
-    CartPage
+    CartPage,
+    ProductDetailsPage
   ],
   providers: [
     StatusBar,

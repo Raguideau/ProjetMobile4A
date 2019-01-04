@@ -26,15 +26,20 @@
 					<h2>{{item.name}}</h2>
 				</ion-row>
 				<ion-row>
-					<ion-col>
+					<ion-col  (click)="itemTapped($event, item)">
 						<div class="picture">
 							<img src={{item.picture}}>  
 						</div>
 					</ion-col>
 					<ion-col>
 						<p>Prix {{item.price}} €</p>
-						<p>Stock {{item.stock}}</p>             
-						<button (click)="addToCart(item)" >Ajouter au panier</button>
+						<p>Stock {{item.stock}}</p>      
+						<div class="buttonSize">       
+							<button class="addButton" ion-button round (click)="addToCart(item)" >Ajouter au panier</button> 
+						</div>
+						<div class="buttonSize"> 
+							<button class="addButton" ion-button round (click)="itemTapped($event, item)" >Page de l'article</button>
+						</div>
 					</ion-col>
 				</ion-row>
 			</ion-grid>

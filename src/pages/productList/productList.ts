@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CartServiceProvider } from '../../providers/cart-service/cart-service';
 import { CartPage } from '../cart/cart';
-//import { ProductDetailsPage } from '../product-details/product-details';
+import { ProductDetailsPage } from '../product-details/product-details';
 import firebase from 'firebase';
 
 

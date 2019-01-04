@@ -1,17 +1,30 @@
 import { Component } from '@angular/core';
-
 import { NavController, NavParams } from 'ionic-angular';
+import { CartServiceProvider } from '../../providers/cart-service/cart-service';
+import { CartPage } from '../cart/cart';
+
 
 
 @Component({
-  selector: 'page-item-details',
-  templateUrl: 'item-details.html'
+  selector: 'page-product-details',
+  templateUrl: 'product-details.html'
 })
-export class ItemDetailsPage {
+export class ProductDetailsPage {
   selectedItem: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
+  constructor(public navCtrl: NavController,
+  				 public navParams: NavParams,
+  				 public cartProvider: CartServiceProvider) {
     this.selectedItem = navParams.get('item');
   }
+
+  addToCart(item) : void {
+    console.log(item.name);
+    this.cartProvider.addItem(item);
+  }
+
+  goToCart():void{
+    this.navCtrl.push(CartPage);
+  }
+
 }
