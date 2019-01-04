@@ -41,6 +41,16 @@
 			</ion-grid>
 		</ion-item>
 	</ion-list>
-	<button (click)='placeOrder()'> Acheter </button>
+
+
+	<div class="emptyCartReplacer" *ngIf="emptyCart; else notEmptyCart">
+			<p>Votre panier est vide pour le moment, veuillez ajouter des produits depuis la page "liste de produits"</p>
+	</div>
+
+	<ng-template #notEmptyCart>
+		<p>
+			<button ion-button full (click)='placeOrder()'> Acheter </button>
+		</p>
+	</ng-template>
 
 </ion-content>

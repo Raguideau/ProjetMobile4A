@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CartServiceProvider } from '../../providers/cart-service/cart-service';
 import firebase from 'firebase';
-
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-cart',
@@ -12,14 +12,22 @@ import firebase from 'firebase';
 export class CartPage {
  
   public cartList: any[];
+  private emptyCart: boolean = true;
 
   constructor(
     public navCtrl: NavController,
-    public cartProvider: CartServiceProvider
+    public cartProvider: CartServiceProvider,
+    public alertCtrl: AlertController
     )
     {
       this.cartProvider.cartRef.on('value', itemSnapshot => {
         this.cartList = this.cartProvider.getCartList();
+        if (this.cartList.length == 0){
+          this.emptyCart=true;
+        }
+        else{
+          this.emptyCart=false;
+        }
       })
     }
 
@@ -30,6 +38,13 @@ export class CartPage {
   }
 
   placeOrder(){
+    const alert = this.alertCtrl.create({
+      title: 'Merci de votre achat!',
+      subTitle: 'Votre commande a bien été pris en compte',
+      buttons: ['OK']
+    });
+    alert.present();
+
     this.cartProvider.placeOrder();
   }
 

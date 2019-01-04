@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CartServiceProvider } from '../../providers/cart-service/cart-service';
 import { CartPage } from '../cart/cart';
+//import { ProductDetailsPage } from '../product-details/product-details';
 import firebase from 'firebase';
 
 
@@ -43,6 +44,12 @@ export class ProductListPage {
 
   goToCart():void{
     this.navCtrl.push(CartPage);
+  }
+
+  itemTapped(event, item) {
+    this.navCtrl.push(ProductDetailsPage, {
+      item: item
+    });
   }
 
 }
