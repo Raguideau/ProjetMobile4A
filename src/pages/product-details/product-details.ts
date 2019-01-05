@@ -24,7 +24,7 @@ export class ProductDetailsPage {
     //console.log(item.name);
     this.cartProvider.addItem(item);
     let toast = this.toastCtrl.create({
-      message: 'Le produit a été ajoutée au panier',
+      message: 'Le produit a été ajouté au panier',
       duration: 3000,
       position: 'bottom'
     });
